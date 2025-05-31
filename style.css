@@ -104,3 +104,33 @@ section.show {
   animation-play-state: paused;
   transform: scale(1.1) translateY(-10px);
 }
+
+@keyframes site-fade-glow {
+  0% {
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(128, 0, 32, 0.4); /* бордовый, прозрачный */
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(128, 0, 32, 0.8); /* бордовый, насыщенный */
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(128, 0, 32, 0.4);
+    transform: scale(0.95);
+  }
+}
+
+.item.site-image img {
+  animation: site-fade-glow 4s ease-in-out infinite;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item.site-image img:hover {
+  animation-play-state: paused;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(128, 0, 32, 1); /* яркий бордовый */
+}
