@@ -53,3 +53,54 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+section {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes gentle-sway {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+@keyframes gentle-sway-reverse {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-3deg); /* просто поменяли знак поворота */
+  }
+}
+
+/* Все скины по умолчанию - обычная анимация */
+.item img[src^="skins/"] {
+  animation: gentle-sway 5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+/* Для второго скина (skin2.png) — анимация в другую сторону */
+.item img[src$="skin2.png"] {
+  animation-name: gentle-sway-reverse;
+}
+
+/* При наведении на любые скины — анимация стоп и масштаб */
+.item img[src^="skins/"]:hover {
+  animation-play-state: paused;
+  transform: scale(1.1) translateY(-10px);
+}
